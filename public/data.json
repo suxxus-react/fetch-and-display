@@ -1,0 +1,12 @@
+[
+  { "id": 1, "name": "John" },
+  { "id": 2, "name": "Bill", "roles": [] },
+  {
+    "id": 3,
+    "name": "Dave",
+    "roles": [
+      { "id": 1, "role": "Admin" },
+      { "id": 2, "role": "Owner" }
+    ]
+  }
+]
