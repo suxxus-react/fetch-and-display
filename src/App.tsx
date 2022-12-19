@@ -1,34 +1,26 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import './App.css'
+import { useState } from "react";
+import reactLogo from "./assets/react.svg";
+import "./App.css";
+
+/**
+ * 1. Create a REACT component
+ * 2. Render HTML <table>
+ * 3. Create an interface for data from source public/data.json
+ * 4. Get the data from public/data.json using fetch API and resolve them by using async function
+ * 4.1. use useState hook to store data
+ * 5. Render fetched data within the HTML Table
+ * 5.1. Render each object in a new table row
+ * 5.2. Render header cells generically by object keys
+ * 5.3. Iterate through data and render content cells
+ * 5.3.1. Roles cell displays given roles as strings, separated by commas
+ * 6. Display the image (url: https://*-ps.w.org/user-avatar-reloaded/assets/icon-256x256.png?rev=2540745 ) on the right side next to the table (using Flexbox).
+ * 6.1. Table should fill 50% of the page horizontally.
+ * 6.2. Image should be centered horizontally in the right 50% of the page.
+ * 6.3. Image and the table should be centered vertically
+ */
 
 function App() {
-  const [count, setCount] = useState(0)
-
-  return (
-    <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </div>
-  )
+  return <div className="App"></div>;
 }
 
-export default App
+export default App;
