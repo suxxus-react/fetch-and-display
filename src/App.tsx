@@ -24,32 +24,27 @@ type State = {
   setUsers: React.Dispatch<React.SetStateAction<Users>>;
 };
 
-// helpers
-// --------
-
 // components
 // ----------
 
 function RenderDataTable({ users }: State): JSX.Element {
-  console.log(users);
+  const headerKeys = [...new Set(users.map(Object.keys).flat())];
 
   return (
     <table>
       <thead>
         <tr>
-          <th>Name</th>
-          <th>Roles</th>
+          {headerKeys.map((k, i) => (
+            <td key={`h_${i}`}>{k}</td>
+          ))}
         </tr>
       </thead>
       <tbody>
         {users.map((user) => (
           <tr key={`user_${user.id}`}>
+            <td>{user.id}</td>
             <td>{user.name}</td>
-            {user?.roles && user.roles.length >= 1 ? (
-              <td>{user.roles.map((r) => r.role).join(", ")}</td>
-            ) : (
-              <td>-</td>
-            )}
+            <td>{user?.roles?.map((r) => r.role).join(", ")}</td>
           </tr>
         ))}
       </tbody>
