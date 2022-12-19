@@ -6,7 +6,7 @@ import "./styles.scss";
 // types
 // ------
 
-type Roles = {
+type Role = {
   id: number;
   role: string;
 };
@@ -14,7 +14,7 @@ type Roles = {
 type User = {
   name: string;
   id: number;
-  roles?: Roles[];
+  roles?: Role[];
 };
 
 type Users = User[];
