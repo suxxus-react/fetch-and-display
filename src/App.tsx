@@ -1,26 +1,89 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import "./App.css";
+import { useState, useEffect } from "react";
 
-/**
- * 1. Create a REACT component
- * 2. Render HTML <table>
- * 3. Create an interface for data from source public/data.json
- * 4. Get the data from public/data.json using fetch API and resolve them by using async function
- * 4.1. use useState hook to store data
- * 5. Render fetched data within the HTML Table
- * 5.1. Render each object in a new table row
- * 5.2. Render header cells generically by object keys
- * 5.3. Iterate through data and render content cells
- * 5.3.1. Roles cell displays given roles as strings, separated by commas
- * 6. Display the image (url: https://*-ps.w.org/user-avatar-reloaded/assets/icon-256x256.png?rev=2540745 ) on the right side next to the table (using Flexbox).
- * 6.1. Table should fill 50% of the page horizontally.
- * 6.2. Image should be centered horizontally in the right 50% of the page.
- * 6.3. Image and the table should be centered vertically
- */
+import "./App.css";
+import "./styles.scss";
+
+// types
+// ------
+
+type Roles = {
+  id: number;
+  role: string;
+};
+
+type User = {
+  name: string;
+  id: number;
+  roles?: Roles[];
+};
+
+type Users = User[];
+
+type State = {
+  users: Users;
+  setUsers: React.Dispatch<React.SetStateAction<Users>>;
+};
+
+// helpers
+// --------
+
+// components
+// ----------
+
+function RenderDataTable({ users }: State): JSX.Element {
+  console.log(users);
+
+  return (
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Roles</th>
+        </tr>
+      </thead>
+      <tbody>
+        {users.map((user) => (
+          <tr key={`user_${user.id}`}>
+            <td>{user.name}</td>
+            {user?.roles && user.roles.length >= 1 ? (
+              <td>{user.roles.map((r) => r.role).join(", ")}</td>
+            ) : (
+              <td>-</td>
+            )}
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  );
+}
 
 function App() {
-  return <div className="App"></div>;
+  const [users, setUsers] = useState<Users>([]);
+
+  const p: State = {
+    users,
+    setUsers,
+  };
+
+  useEffect(() => {
+    const fetchUserData = async () => {
+      const data = await fetch("/data.json");
+      const response: Users = await data.json();
+      setUsers(response);
+    };
+
+    fetchUserData();
+  }, []);
+
+  return (
+    <div className="App">
+      <RenderDataTable {...p} />
+      <img
+        className="App-avatar"
+        src="https://ps.w.org/user-avatar-reloaded/assets/icon-256x256.png?rev=2540745"
+      />
+    </div>
+  );
 }
 
 export default App;

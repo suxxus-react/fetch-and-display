@@ -1,0 +1,21 @@
+.App {
+  display: flex;
+
+  &-avatar {
+    margin: 0 auto;
+  }
+}
+
+table {
+  min-width: 50%;
+  border-collapse: collapse;
+  border: 1px solid black;
+  th {
+    border: 1px solid black;
+    padding: 5px;
+  }
+  td {
+    border: 1px solid black;
+    padding: 5px;
+  }
+}
