@@ -48,5 +48,7 @@ http://localhost:5173/
 ```
 * npm run `dev`
 ```
+## Sandbox
+[demo](https://codesandbox.io/p/github/suxxus-react/fetch-and-display/main?file=%2FREADME.md&selection=%5B%7B%22endColumn%22%3A8%2C%22endLineNumber%22%3A46%2C%22startColumn%22%3A8%2C%22startLineNumber%22%3A46%7D%5D)
 
 ### End
